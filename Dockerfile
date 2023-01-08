@@ -9,10 +9,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /var/run/sshd
-RUN echo 'root:jenkins' | chpasswd
-RUN echo 'PermitRootLogin yes' > /etc/ssh/sshd_config.d/permit-root-login.conf
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN mkdir /var/run/sshd \
+    && echo 'root:jenkins' | chpasswd \
+    && echo 'PermitRootLogin yes' > /etc/ssh/sshd_config.d/permit-root-login.conf \
+    && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" > /etc/profile.d/docker-ssh.sh
