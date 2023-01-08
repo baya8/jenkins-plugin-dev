@@ -11,7 +11,4 @@ services:
     tty: true
     volumes:
       - ./app:/opt/app
-      - ./.vscode-server:/root/.vscode-server
       - ./.m2:/root/.m2
-    ports:
-      - 2222:22

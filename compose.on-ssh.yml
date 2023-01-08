@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  java:
+    volumes:
+      - ./.vscode-server:/root/.vscode-server
+    ports:
+      - 2222:22
